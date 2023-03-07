@@ -16,37 +16,13 @@ namespace Registration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                string constr = ConfigurationManager.ConnectionStrings["studentdbConnectionString"].ConnectionString;
-                using (MySqlConnection con = new MySqlConnection(constr))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT MEMBERSHIP_NO,NAME,DOB,SCHOOL,AGE,GENDER,ADDRESS,CONTACT_NO,PARENT_NAME,EMERGENCY_CONTACT,GMAIL,PAYMENT_METHOD FROM personal_info"))
-                    {
-                        using (MySqlDataAdapter da = new MySqlDataAdapter())
-                        {
-                            cmd.Connection = con;
-                            da.SelectCommand = cmd;
-                            using (DataTable dt = new DataTable())
-                            {
-                                da.Fill(dt);
-                                GridView1.DataSource = dt;
-                                GridView1.DataBind();
-                            }
-                        }
-                    }
-                }
-            }
+ 
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            //TextBox5.Text = GridView1.SelectedRow.Cells[1].Text;
-            //TextBox2.Text = GridView1.SelectedRow.Cells[2].Text;
-            //TextBox3.Text = GridView1.SelectedRow.Cells[3].Text;
-            //TextBox4.Text = GridView1.SelectedRow.Cells[4].Text;
-            //TextBox1.Text = GridView1.SelectedRow.Cells[5].Text;
+
         }
 
 
@@ -55,22 +31,7 @@ namespace Registration
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            //MySqlConnection connection = new MySqlConnection("server=localhost;user id=root; password=admin;database=studentdb");
-            //string searchstudentidToUpdate = TextBox5.Text;
-            //string update_query = "UPDATE student SET first_name = '" + TextBox2.Text + "',last_name = '" + TextBox3.Text + "',email = '" + TextBox4.Text + "',phone_number = '" + TextBox1.Text + "' WHERE studentid = '" + searchstudentidToUpdate + "'";
-            //MySqlCommand cmd = new MySqlCommand(update_query, connection);
 
-            //connection.Open();
-            //cmd.ExecuteNonQuery();
-            //connection.Close();
-
-            //Label2.Text = "Student Updated Successfull !";
-            //TextBox5.Text = "";
-            //TextBox2.Text = "";
-            //TextBox3.Text = "";
-            //TextBox4.Text = "";
-            //TextBox1.Text = "";
-            //Response.Redirect(Request.RawUrl);
         }
 
         protected void btn_view_Click(object sender, EventArgs e)
@@ -78,8 +39,87 @@ namespace Registration
             Response.Redirect("~/WebForm3.aspx");
         }
 
-     
+        protected void btn_view_Click1(object sender, EventArgs e)
+        {
 
-        
+            // Retrieve the connection string from web.config
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+
+            // Create a new MySqlConnection using the connection string
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                // Open the connection to the database
+                connection.Open();
+
+                // Create the SQL query based on the current month
+                string query;
+            if (ddl_Month.SelectedValue == "1") // Januarys
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_jan;";
+            }
+            else if (ddl_Month.SelectedValue == "2") // February
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_feb;";
+            }
+            else if (ddl_Month.SelectedValue == "3") // March
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_mar;";
+            }
+            else if (ddl_Month.SelectedValue == "4") // April
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_apr;";
+            }
+            else if (ddl_Month.SelectedValue == "5") // May
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_may;";
+            }
+            else if (ddl_Month.SelectedValue == "6") // June
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_june;";
+            }
+            else if (ddl_Month.SelectedValue == "7") // July
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_jul;";
+            }
+            else if (ddl_Month.SelectedValue == "8") // August
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_aug;";
+            }
+            else if (ddl_Month.SelectedValue == "9") // September
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_sep;";
+            }
+            else if (ddl_Month.SelectedValue == "10") // October
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_oct;";
+            }
+            else if (ddl_Month.SelectedValue == "11") // November
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_nov;";
+            }
+            else // December
+            {
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_dec;";
+            }
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                // Create a DataTable to hold the results of the query
+                DataTable dataTable = new DataTable();
+
+                // Use a MySqlDataAdapter to fill the DataTable with the results of the query
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                // Bind the DataTable to the GridView control
+                GridView1.DataSource = dataTable;
+                GridView1.DataBind();
+
+                // Close the connection to the database
+                connection.Close();
+            }
+            // Execute the SQL query using the appropriate database connection
+
+        }
     }
 }
