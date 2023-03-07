@@ -19,114 +19,144 @@ namespace Registration
 
             if (!this.IsPostBack)
             {
-                string constr = ConfigurationManager.ConnectionStrings["studentdbConnectionString"].ConnectionString;
-                using (MySqlConnection con = new MySqlConnection(constr))
+                string query = "SELECT id,item_name FROM items_in;";
+                MySqlCommand command = new MySqlCommand(query);
+                using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT MEMBERSHIP_NO FROM personal_info ORDER BY date DESC LIMIT 1"))
+                    command.Connection = connection;
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
                     {
-
-                        using (MySqlDataAdapter da = new MySqlDataAdapter())
-                        {
-                            cmd.Connection = con;
-                            da.SelectCommand = cmd;
-                            using (DataTable dt = new DataTable())
-                            {
-                                da.Fill(dt);
-                                string id = dt.Rows[0][0].ToString();
-                                string plus = id.ToString() + 1;
-                                string authorName = id.Substring(2);
-                                int userID = Convert.ToInt32(authorName.ToString());
-                                if (userID < 9999)
-                                {
-                                    userID++;
-                                }
-                                string numb = userID.ToString();
-                                string let = "K/";
-                                    string http = let + numb;
-
-
-                                txt_id.Text = http.ToString();
-                            }
-                        }
+                        int id = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        ListItem item = new ListItem(name, id.ToString());
+                        ddl_products.Items.Add(item);
                     }
+
+                    reader.Close();
                 }
+
+
+
+
             }
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection("server=localhost;user id=root;database=students");
+            // Get the values from the textboxes
+            string productName = ddl_products.SelectedItem.Text;
+            string companyName = txt_compName.Text;
+            string brandName = txt_brandName.Text;
+            string invoiceNumber = txt_invNum.Text;
+            int quantity = int.Parse(txt_quantity.Text);
 
-            connection.Open();
-            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-            string insert_query = "INSERT INTO personal_info (MEMBERSHIP_NO,NAME,DOB,SCHOOL,AGE,GENDER,ADDRESS,CONTACT_NO,PARENT_NAME,EMERGENCY_CONTACT,GMAIL,PAYMENT_METHOD,date,eme_name) VALUES('" + txt_id.Text + "','" + txt_firstname.Text + "','" + txt_lastname.Text + "','" + txt_email.Text + "','" + txt_phonenum.Text + "','" + RadioButtonList1.Text + "','" + txt_address.Text + "','" + txt_contact.Text + "','" + txt_parent.Text + "','" + txt_emeCon.Text + "','" + txt_mail.Text + "','" + RadioButtonList2.Text + "','" +date+ "','"+txt_emename.Text+"')";
+            // Create a connection to the MySQL database using the connection string from the web.config file
+            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            MySqlConnection connection = new MySqlConnection(connectionString);
 
-            MySqlCommand cmd = new MySqlCommand(insert_query, connection);
+            // ----------------------------------------------------------------
+            // Get the current month
+int month = DateTime.Now.Month;
 
-            cmd.CommandText = insert_query;
-            cmd.ExecuteNonQuery();
-            cmd.Connection = connection;
-            connection.Close();
+// Create the SQL query based on the current month
+string query;
+if (month == 1) // January
+{
+                query = "INSERT INTO items_in_jan (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+else if (month == 2) // February
+{
+                query = "INSERT INTO items_in_feb (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 3) // March
+{
+                query = "INSERT INTO items_in_mar (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 4) // April
+{
+                query = "INSERT INTO items_in_apr (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 5) // May
+{
+                query = "INSERT INTO items_in_may (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 6) // June
+{
+                query = "INSERT INTO items_in_june (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 7) // July
+{
+                query = "INSERT INTO items_in_jul (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 8) // August
+{
+                query = "INSERT INTO items_in_aug (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 9) // September
+{
+                query = "INSERT INTO items_in_sep (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 10) // October
+{
+                query = "INSERT INTO items_in_oct (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else if (month == 11) // November
+{
+                query = "INSERT INTO items_in_nov (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+            else // December
+{
+                query = "INSERT INTO items_in_dec (item_name, company_name, brand_name, invoice_number, quantity) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            }
+
+            // Execute the SQL query using the appropriate database connection
+
+            //-----------------------------------------------------------------
 
 
+            // Create a command object to insert the data into the table
 
-            //connection.Open();
-            //string insert = "INSERT INTO payments (MEMBERSHIP_NO) VALUES('" + txt_id.Text + "')";
+            //string query = "INSERT INTO items_in (product_name, company_name, brand_name, invoice_number, quantity) VALUES (@product_name, @company_name, @brand_name, @invoice_number, @quantity);";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@item_name", productName);
+            command.Parameters.AddWithValue("@company_name", companyName);
+            command.Parameters.AddWithValue("@brand_name", brandName);
+            command.Parameters.AddWithValue("@invoice_number", invoiceNumber);
+            command.Parameters.AddWithValue("@quantity", quantity);
 
-            //MySqlCommand commd = new MySqlCommand(insert, connection);
+            try
+            {
+                // Open the connection and execute the command
+                connection.Open();
+                command.ExecuteNonQuery();
 
-            //commd.CommandText = insert;
-            //commd.ExecuteNonQuery();
-            //commd.Connection = connection;
-            //connection.Close();
+                // Clear the textboxes
+                ddl_products.SelectedIndex = 0;
+                txt_compName.Text = "";
+                txt_brandName.Text = "";
+                txt_invNum.Text = "";
+                txt_quantity.Text = "";
 
-
-
-
-
-
-
-
-            Label2.Text = "Student Registration Successfull !";
-            txt_id.Text = "";
-            txt_firstname.Text = "";
-            txt_lastname.Text = "";
-            txt_email.Text = "";
-            txt_phonenum.Text = "";
-            RadioButtonList1.SelectedValue = "";
-            txt_address.Text = "";
-            txt_contact.Text = "";
-            txt_parent.Text = "";
-            txt_emeCon.Text = "";
-            txt_mail.Text = "";
-            RadioButtonList2.SelectedValue = "";
-            Response.Redirect("~/WebForm3.aspx");
+                // Display a success message
+                lbl_message.Text = "Data inserted successfully.";
+            }
+            catch (Exception ex)
+            {
+                // Display an error message
+                lbl_message.Text = "Error inserting data: " + ex.Message;
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
 
         }
 
-        protected void btn_delete_Click(object sender, EventArgs e)
-        {
-            MySqlConnection connection = new MySqlConnection("server=localhost;user id=root; password=admin;database=studentdb");
-            string searchstudentidToDelete = txt_id.Text;
-            string delete_query = "DELETE FROM student WHERE studentid = '" + searchstudentidToDelete + "'";
-
-
-            MySqlCommand cmd = new MySqlCommand(delete_query, connection);
-
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
-
-
-            Label2.Text = "Student Delete Successfull !";
-
-            txt_email.Text = "";
-            txt_firstname.Text = "";
-            txt_id.Text = "";
-            txt_lastname.Text = "";
-            txt_phonenum.Text = "";
-            
-        }
+       
 
         protected void btn_view_Click(object sender, EventArgs e)
         {
@@ -135,21 +165,7 @@ namespace Registration
 
         protected void btn_edit_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection("server=localhost;user id=root; password=admin;database=studentdb");
-            string searchstudentidToUpdate = txt_id.Text;
-            string update_query = "UPDATE student SET first_name = '" + txt_firstname.Text + "',last_name = '" + txt_lastname.Text + "',email = '" + txt_email.Text + "',phone_number = '" + txt_phonenum.Text + "' WHERE studentid = '" + txt_id.Text + "'";
-            MySqlCommand cmd = new MySqlCommand(update_query, connection);
-
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
-
-            Label2.Text = "Student Updated Successfull !";
-            txt_email.Text = "";
-            txt_firstname.Text = "";
-            txt_id.Text = "";
-            txt_lastname.Text = "";
-            txt_phonenum.Text = "";
+            
         }
 
         protected void txt_firstname_TextChanged(object sender, EventArgs e)
@@ -160,46 +176,18 @@ namespace Registration
         protected void txt_id_TextChanged(object sender, EventArgs e)
         {
 
-            //string constr = ConfigurationManager.ConnectionStrings["studentdbConnectionString"].ConnectionString;
-            //using (MySqlConnection con = new MySqlConnection(constr))
-            //{
-            //    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM personal_info WHERE MEMBERSHIP_NO = '"+txt_id.Text+"'"))
-            //    {
-
-            //        using (MySqlDataAdapter da = new MySqlDataAdapter())
-            //        {
-            //            cmd.Connection = con;
-            //            da.SelectCommand = cmd;
-            //            using (DataTable dt = new DataTable())
-            //            {
-            //                da.Fill(dt);
-            //                txt_id.Text = dt.Rows[0][0].ToString();
-            //                txt_firstname.Text = dt.Rows[0][1].ToString();
-            //                txt_lastname.Text = dt.Rows[0][2].ToString();
-            //                txt_email.Text = dt.Rows[0][3].ToString();
-            //                txt_phonenum.Text = dt.Rows[0][7].ToString();
-            //                //RadioButtonList1.SelectedValue = dt.Rows[0][4].ToString();
-            //                txt_address.Text = dt.Rows[0][6].ToString();
-            //                txt_contact.Text = dt.Rows[0][7].ToString();
-            //                txt_parent.Text = dt.Rows[0][8].ToString();
-            //                txt_emeCon.Text = dt.Rows[0][9].ToString();
-            //                txt_email.Text = dt.Rows[0][10].ToString();
-            //                //RadioButtonList2.SelectedValue = dt.Rows[0][11].ToString();
-
-
-
-
-
-            //            }
-            //        }
-            //    }
-            //}
+           
 
         }
 
         protected void btn_pay_Click(object sender, EventArgs e)
         {
             Response.Redirect("fee.aspx");
+        }
+
+        protected void btn_viewst_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm2.aspx");
         }
     }
 }
