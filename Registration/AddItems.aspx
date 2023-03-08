@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="WebForm3.aspx.cs" Inherits="Registration.WebForm3" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="AddItems.aspx.cs" Inherits="Registration.WebForm3" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

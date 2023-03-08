@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="Registration.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="Registration.WebForm2" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,11 +75,26 @@
 
         </br>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Height="236px" Width="100%" CellPadding="4" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" AllowSorting="True" HorizontalAlign="Center" PageSize="1000">
-        <Columns>
+                <Columns>
+            <asp:BoundField DataField="date" HeaderText="Date" ItemStyle-Width="100" >
+<ItemStyle Width="100px"></ItemStyle>
+            </asp:BoundField>
             <asp:BoundField DataField="item_name" HeaderText="Item Name" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
             </asp:BoundField>
+            <asp:BoundField DataField="company_name" HeaderText="Company Name" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="brand_name" HeaderText="Brand Name" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="quantity" HeaderText="Quantity" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
             <asp:BoundField DataField="initial_stock" HeaderText="Initial Stock" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="invoice_number" HeaderText="Invoice Number" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
             </asp:BoundField>
             
@@ -90,6 +105,7 @@
 
 
         </Columns>
+
         <FooterStyle BackColor="#FFFFCC" ForeColor="#000000" />
         <HeaderStyle BackColor="#0099FF" Font-Bold="True" ForeColor="Black" />
         <PagerSettings PageButtonCount="100" />
