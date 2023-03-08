@@ -161,6 +161,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fee.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="instock.aspx" />
     <Content Include="payments.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -413,6 +414,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="instock.aspx.cs">
+      <DependentUpon>instock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="instock.aspx.designer.cs">
+      <DependentUpon>instock.aspx</DependentUpon>
     </Compile>
     <Compile Include="payments.aspx.cs">
       <DependentUpon>payments.aspx</DependentUpon>

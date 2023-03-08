@@ -11,7 +11,7 @@ namespace Registration
 {
 
 
-    public partial class WebForm2
+    public partial class instock
     {
 
         /// <summary>
@@ -67,15 +67,6 @@ namespace Registration
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_Month;
-
-        /// <summary>
-        /// ddl_items control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_items;
 
         /// <summary>
         /// btn_view control.

@@ -57,6 +57,8 @@
         <label for="comp_Name">
         Company Name</label>
         <asp:TextBox ID="txt_compName" class="form-control" input type="name" placeholder="Enter Company" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" class="form-control" input type="number" Visible ="false" runat="server"></asp:TextBox>
+
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_compName" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />

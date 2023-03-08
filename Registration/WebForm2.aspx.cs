@@ -16,7 +16,31 @@ namespace Registration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
- 
+            if (!this.IsPostBack)
+            {
+                string query = "SELECT id,item_name FROM items_in;";
+                MySqlCommand command = new MySqlCommand(query);
+                using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString))
+                {
+                    command.Connection = connection;
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        ListItem item = new ListItem(name, id.ToString());
+                        ddl_items.Items.Add(item);
+                    }
+
+                    reader.Close();
+                }
+
+
+
+
+            }
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,56 +77,58 @@ namespace Registration
 
                 // Create the SQL query based on the current month
                 string query;
-            if (ddl_Month.SelectedValue == "1") // Januarys
+                string itemName = ddl_items.SelectedItem.Text;
+                if (ddl_Month.SelectedValue == "1") // Januarys
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_jan;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_jan WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "2") // February
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_feb;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_feb WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "3") // March
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_mar;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_mar WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "4") // April
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_apr;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_apr WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "5") // May
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_may;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_may WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "6") // June
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_june;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_june WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "7") // July
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_jul;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_jul WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "8") // August
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_aug;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_aug WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "9") // September
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_sep;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_sep WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "10") // October
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_oct;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_oct WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else if (ddl_Month.SelectedValue == "11") // November
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_nov;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_nov WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
             else // December
             {
-                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number FROM items_in_dec;";
+                query = "SELECT item_name,company_name,brand_name,quantity,invoice_number,initial_stock,date FROM items_in_dec WHERE item_name = @SelectedName ORDER BY DATE DESC;";
             }
 
                 MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@SelectedName", itemName);
 
                 // Create a DataTable to hold the results of the query
                 DataTable dataTable = new DataTable();
