@@ -11,7 +11,7 @@ namespace Registration
 {
 
 
-    public partial class WebForm3
+    public partial class stockout
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace Registration
         protected global::System.Web.UI.WebControls.Button btn_viewst;
 
         /// <summary>
-        /// Button1 control.
+        /// btn_in control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btn_in;
 
         /// <summary>
         /// ddl_products control.

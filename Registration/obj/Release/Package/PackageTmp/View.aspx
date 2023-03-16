@@ -131,9 +131,7 @@ padding: 5px;
         </asp:DropDownList>
         </br>
         <br>
-            <asp:DropDownList ID="ddl_items" runat="server">
-                <asp:ListItem></asp:ListItem>
-        </asp:DropDownList>
+            <asp:DropDownList ID="ddl_items" runat="server"></asp:DropDownList>
         </br>
         
         <br>

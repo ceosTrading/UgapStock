@@ -102,36 +102,54 @@ namespace Registration
 
 
             string itemname = ddl_products.SelectedItem.Text;
-            string check = "SELECT initial_stock,date FROM "+date+ " WHERE item_name = @SelectedName ORDER BY date DESC LIMIT 1";
-            int output;
-            MySqlCommand mycommand = new MySqlCommand(check, connection);
-            mycommand.Parameters.AddWithValue("@SelectedName", itemname);
-
             try
             {
-                // Open the connection and execute the command
                 connection.Open();
-                output = (int)mycommand.ExecuteScalar();
-                TextBox1.Text = output.ToString();
+                string check = "SELECT initial_stock,date FROM " + date + " WHERE item_name = @SelectedName ORDER BY date DESC LIMIT 1";
+                int output;
+                MySqlCommand mycommand = new MySqlCommand(check, connection);
+                mycommand.Parameters.AddWithValue("@SelectedName", itemname);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(mycommand);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
 
-                mycommand.ExecuteNonQuery();
+                if (dataSet.Tables[0].Rows.Count == 0)
+                {
+                    string qty = txt_quantity.Text;
+                    TextBox1.Text = qty;
+
+                }
+                else
+                {
+
+                    DataRow row = dataSet.Tables[0].Rows[0];
+
+
+                    
+
+                    string column1Value = row["initial_stock"].ToString(); // Access column by name
+                    int c1Value = int.Parse(column1Value);
+                    int numm2 = int.Parse(txt_quantity.Text);
+                    int summery = c1Value + numm2;
+                    int total = summery;
+                    TextBox1.Text = summery.ToString();
+                }
+
+
+                connection.Close();
             }
             catch (Exception ex)
             {
                 // Display an error message
                 lbl_message.Text = "Error inserting data: " + ex.Message;
             }
+
+
             finally
             {
-                // Close the connection
-
+                // Make sure to always close the database connection
                 connection.Close();
             }
-
-
-
-
-
 
             // Get the values from the textboxes
             string productName = ddl_products.SelectedItem.Text;
@@ -141,10 +159,10 @@ namespace Registration
             string valu = txt_quantity.Text;
             int num1 = int.Parse(TextBox1.Text);
             int num2 = int.Parse(txt_quantity.Text);
-            int sum = num1 + num2;
+            //int sum = num1;
 
 
-            int quantity = sum;
+            int quantity = num1;
 
             //string check = "";
 

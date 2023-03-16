@@ -1,10 +1,13 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Script.Serialization;
-using System.Web.Services;
-using MySql.Data.MySqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Registration
 {
@@ -15,46 +18,36 @@ namespace Registration
 
         }
 
-        [WebMethod]
-        public static string Loginpage(string username, string password)
+        protected void ValidateUser(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=stock;");
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users WHERE username=@username AND password=@password", conn);
-            cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@password", password);
-            conn.Open();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                return "success";
-            }
-            else
-            {
-                return "failure";
-            }
-        }
+            string Uname = txtUsername.Text;
+            string psswrd = txtPassword.Text;
+            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string query = "SELECT * FROM users where username = @username AND `password` = @password";
+            MySqlCommand mycommand = new MySqlCommand(query, connection);
+            mycommand.Parameters.AddWithValue("@username", Uname);
+            mycommand.Parameters.AddWithValue("@password", psswrd);
 
-        protected void btn_login_Click(object sender, EventArgs e )
-        {
-            string username =inputUsername.Text;
-            string password = inputPassword.Text;
-            MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=stock;");
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users WHERE username=@username AND password=@password", conn);
-            cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@password", password);
-            conn.Open();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
             {
-                string redirectUrl = "Additems.aspx";
-                Response.Redirect(redirectUrl);
-                
+                mycommand.Connection = connection;
+                    connection.Open();
+                    MySqlDataReader reader = mycommand.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string name = reader.GetString(1);
+                    string password = reader.GetString(2);
+                        ListItem item = new ListItem(name, password.ToString());
+                    //ddl_products.Items.Add(item);
+                    Response.Redirect("~/WELCOME !!!.aspx");
+                }
+
+                reader.Close();
+                lblMessage.Text = "Incorrect Username Or Password !!";
+                }
+
             }
-            else
-            {
-                string redirectUrl = "login.aspx";
-                Response.Redirect(redirectUrl);
-            }
-        }
+        
     }
 }

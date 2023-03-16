@@ -281,10 +281,6 @@ C:\Users\Thamodya\Documents\Registration\Registration\obj\Debug\Registration.csp
 C:\Users\Thamodya\Documents\Registration\Registration\obj\Debug\Registration.csproj.CopyComplete
 C:\Users\Thamodya\Documents\Registration\Registration\obj\Debug\Registration.dll
 C:\Users\Thamodya\Documents\Registration\Registration\obj\Debug\Registration.pdb
-C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.csproj.AssemblyReference.cache
-C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.csproj.CoreCompileInputs.cache
-C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.dll
-C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.pdb
 C:\Users\Thisal\Documents\STOCK\Registration\bin\Registration.dll.config
 C:\Users\Thisal\Documents\STOCK\Registration\bin\Registration.dll
 C:\Users\Thisal\Documents\STOCK\Registration\bin\Registration.pdb
@@ -376,4 +372,8 @@ C:\Users\Thisal\Documents\STOCK\Registration\bin\Newtonsoft.Json.xml
 C:\Users\Thisal\Documents\STOCK\Registration\bin\Antlr3.Runtime.pdb
 C:\Users\Thisal\Documents\STOCK\Registration\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Thisal\Documents\STOCK\Registration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.csproj.AssemblyReference.cache
+C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.csproj.CoreCompileInputs.cache
 C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.csproj.CopyComplete
+C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.dll
+C:\Users\Thisal\Documents\STOCK\Registration\obj\Debug\Registration.pdb

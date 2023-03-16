@@ -42,9 +42,8 @@
     <form id="form1" runat="server" class="auto-style1">
          
         <br>
-        <asp:Button class="btn btn-primary" ID="btn_home" runat="server" Text="Home" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/WebForm3.aspx" />
-        <asp:Button class="btn btn-primary" ID="btn_viewst" runat="server" Text="View Data" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/WebForm2.aspx" />
-        <asp:Button class="btn btn-primary" ID="btn_his" runat="server" Text="View Payments" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/payments.aspx" />
+        <asp:Button class="btn btn-info" ID="btn_home" runat="server" Text="Home" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/WELCOME !!!.aspx" />
+        <asp:Button class="btn btn-primary" ID="btn_viewst" runat="server" Text="View Items" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/View.aspx"  />
 
                    
     </br>

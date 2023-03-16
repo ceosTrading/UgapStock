@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="AddItems.aspx.cs" Inherits="Registration.WebForm3" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="stockout.aspx.cs" Inherits="Registration.stockout" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +34,12 @@
     <form id="form1"  runat="server">
 
 <div class="auto-style2">
-  <center><h2>Stock In</h2></center>
+  <center><h2>Stock Out</h2></center>
      
     <br>
         <asp:Button class="btn btn-info" ID="btn_home" runat="server" Text="Home" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/WELCOME !!!.aspx" />
         <asp:Button class="btn btn-primary" ID="btn_viewst" runat="server" Text="View Items" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/View.aspx" OnClick="btn_viewst_Click" />
-         <asp:Button class="btn btn-danger" ID="Button1" runat="server" Text="Stock Out" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/stockout.aspx" />
+        <asp:Button class="btn btn-success" ID="btn_in" runat="server" Text="Stock In" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/Additems.aspx" />
                    
     </br>
     <div class="auto-style1">
@@ -90,7 +91,7 @@
 
 
 
-    <asp:Button class="btn btn-success" ID="btn_submit" runat="server" Text="Add Items To Stock" Height="38px" Width="161px" OnClick="btn_submit_Click" />
+    <asp:Button class="btn btn-danger" ID="btn_submit" runat="server" Text="Out Items From Stock" Height="38px" Width="170px" OnClick="btn_submit_Click" />
     &nbsp;&nbsp;&nbsp;
 
 
@@ -114,3 +115,4 @@
 
 </body>
 </html>
+

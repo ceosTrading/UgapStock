@@ -240,6 +240,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="stockout.aspx" />
     <Content Include="View.aspx" />
     <Content Include="Scripts\index.js.flow" />
     <Content Include="Scripts\esm\popper.min.js.map" />
@@ -344,6 +345,7 @@
     <Content Include="Content\bootstrap\bootstrap-reboot.scss" />
     <Content Include="Content\bootstrap\bootstrap-grid.scss" />
     <Content Include="AddItems.aspx" />
+    <Content Include="WELCOME !!!.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -412,6 +414,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="stockout.aspx.cs">
+      <DependentUpon>stockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stockout.aspx.designer.cs">
+      <DependentUpon>stockout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -432,6 +441,13 @@
     </Compile>
     <Compile Include="AddItems.aspx.designer.cs">
       <DependentUpon>AddItems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WELCOME !!!.aspx.cs">
+      <DependentUpon>WELCOME !!!.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WELCOME !!!.aspx.designer.cs">
+      <DependentUpon>WELCOME !!!.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
