@@ -44,6 +44,34 @@ namespace Registration
             }
         }
 
+        protected void InsertData()
+        {
+            string connectionString = "Server=localhost;Database=stock;Uid=root;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand("UPDATE items_update SET invoice_number=@invnum, date=@date, initial_stock=@stock WHERE item_name=@name", connection);
+
+
+            string productName = ddl_products.SelectedItem.Text;
+            string companyName = txt_compName.Text;
+            string brandName = txt_brandName.Text;
+            string invoiceNumber = txt_invNum.Text;
+            string valu = txt_quantity.Text;
+            int num1 = int.Parse(TextBox1.Text);
+            //int num2 = int.Parse(txt_quantity.Text);
+
+
+            command.Parameters.AddWithValue("@invnum", invoiceNumber);
+            command.Parameters.AddWithValue("@date", DateTime.Now);
+            command.Parameters.AddWithValue("@stock", num1);
+            command.Parameters.AddWithValue("@name", productName);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+
+
+        }
+
         protected void btn_submit_Click(object sender, EventArgs e)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
@@ -118,6 +146,7 @@ namespace Registration
 
                     lbl_message.Text = "There Is No Items In Stock";
                     connection.Close();
+
                 }
                 else
                 {
@@ -212,11 +241,7 @@ namespace Registration
                         command.ExecuteNonQuery();
 
                         // Clear the textboxes
-                        ddl_products.SelectedIndex = 0;
-                        txt_compName.Text = "";
-                        txt_brandName.Text = "";
-                        txt_invNum.Text = "";
-                        txt_quantity.Text = "";
+                        
 
                         // Display a success message
                         lbl_message.Text = "Data inserted successfully.";
@@ -230,6 +255,12 @@ namespace Registration
                     {
                         // Close the connection
                         connection.Close();
+                        InsertData();
+                        ddl_products.SelectedIndex = 0;
+                        txt_compName.Text = "";
+                        txt_brandName.Text = "";
+                        txt_invNum.Text = "";
+                        txt_quantity.Text = "";
                     }
                 }
 

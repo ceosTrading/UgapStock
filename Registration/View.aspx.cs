@@ -65,6 +65,8 @@ namespace Registration
 
         protected void btn_view_Click1(object sender, EventArgs e)
         {
+            GridView2.DataSource = null;
+            GridView2.DataBind();
 
             // Retrieve the connection string from web.config
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
@@ -78,6 +80,27 @@ namespace Registration
                 // Create the SQL query based on the current month
                 string query;
                 string itemName = ddl_items.SelectedItem.Text;
+
+                if (string.IsNullOrEmpty(ddl_items.SelectedValue) || string.IsNullOrEmpty(ddl_Month.SelectedValue))
+                {
+                    query = "SELECT item_name,invoice_number,initial_stock,date FROM items_update ORDER BY DATE DESC;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    // Create a DataTable to hold the results of the query
+                    DataTable dataTable = new DataTable();
+
+                    // Use a MySqlDataAdapter to fill the DataTable with the results of the query
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataTable to the GridView control
+                    GridView2.DataSource = dataTable;
+                    GridView2.DataBind();
+
+                    // Close the connection to the database
+                    connection.Close();
+
+                }
 
                 if (string.IsNullOrEmpty(ddl_items.SelectedValue))
                 {

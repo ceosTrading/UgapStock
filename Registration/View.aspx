@@ -115,7 +115,8 @@ padding: 5px;
             <asp:Label ID="Label1" runat="server" Text="Select Month -"></asp:Label>
             </br>
         <br>
-        <asp:DropDownList ID="ddl_Month" runat="server">
+        <asp:DropDownList ID="ddl_Month" class="btn btn-info dropdown-toggle" runat="server" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <asp:ListItem></asp:ListItem>
             <asp:ListItem Value="1">January</asp:ListItem>
             <asp:ListItem Value="2">February</asp:ListItem>
             <asp:ListItem Value="3">March</asp:ListItem>
@@ -132,7 +133,6 @@ padding: 5px;
         </br>
         <br>
             <asp:DropDownList ID="ddl_items" runat="server">
-                <asp:ListItem></asp:ListItem>
         </asp:DropDownList>
         </br>
         
@@ -155,6 +155,41 @@ padding: 5px;
 <ItemStyle Width="150px"></ItemStyle>
             </asp:BoundField>
             <asp:BoundField DataField="quantity" HeaderText="Quantity" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="initial_stock" HeaderText="Initial Stock" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="invoice_number" HeaderText="Invoice Number" ItemStyle-Width="150" >
+<ItemStyle Width="150px"></ItemStyle>
+            </asp:BoundField>
+            
+           
+            
+            
+         
+
+
+        </Columns>
+
+        <%--<FooterStyle BackColor="#FFFFCC" ForeColor="#000000" />
+        <HeaderStyle BackColor="#0099FF" Font-Bold="True" ForeColor="Black" />
+        <PagerSettings PageButtonCount="100" />
+        <PagerStyle ForeColor="#000000" HorizontalAlign="Center" BackColor="#FFFFCC" />
+        <RowStyle BackColor="White" ForeColor="#330099" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#000000" />
+        <SortedAscendingCellStyle BackColor="#FEFCEB" />
+        <SortedAscendingHeaderStyle BackColor="#AF0101" />
+        <SortedDescendingCellStyle BackColor="#F6F0C0" />
+        <SortedDescendingHeaderStyle BackColor="#7E0000" />--%>
+    </asp:GridView>
+
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Height="236px" Width="100%" CellPadding="4" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" AllowSorting="True" HorizontalAlign="Center" PageSize="1000" CssClass="mydatagrid">
+                <Columns>
+            <asp:BoundField DataField="date" HeaderText="Date" ItemStyle-Width="100" >
+<ItemStyle Width="100px"></ItemStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="item_name" HeaderText="Item Name" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
             </asp:BoundField>
             <asp:BoundField DataField="initial_stock" HeaderText="Initial Stock" ItemStyle-Width="150" >

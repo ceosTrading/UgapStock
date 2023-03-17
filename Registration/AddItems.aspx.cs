@@ -43,6 +43,33 @@ namespace Registration
 
             }
         }
+        protected void InsertData()
+        {
+            string connectionString = "Server=localhost;Database=stock;Uid=root;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand("UPDATE items_update SET invoice_number=@invnum, date=@date, initial_stock=@stock WHERE item_name=@name", connection);
+
+
+            string productName = ddl_products.SelectedItem.Text;
+            string companyName = txt_compName.Text;
+            string brandName = txt_brandName.Text;
+            string invoiceNumber = txt_invNum.Text;
+            string valu = txt_quantity.Text;
+            int num1 = int.Parse(TextBox1.Text);
+            int num2 = int.Parse(txt_quantity.Text);
+
+
+            command.Parameters.AddWithValue("@invnum", invoiceNumber);
+            command.Parameters.AddWithValue("@date", DateTime.Now);
+            command.Parameters.AddWithValue("@stock", num1);
+            command.Parameters.AddWithValue("@name", productName);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+
+
+        }
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
@@ -118,6 +145,7 @@ namespace Registration
                     string qty = txt_quantity.Text;
                     TextBox1.Text = qty;
 
+                    InsertData();
                 }
                 else
                 {
@@ -133,6 +161,8 @@ namespace Registration
                     int summery = c1Value + numm2;
                     int total = summery;
                     TextBox1.Text = summery.ToString();
+                    InsertData();
+
                 }
 
 
