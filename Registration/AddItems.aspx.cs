@@ -1,13 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using System.Web.UI.WebControls;
 
 
 namespace Registration
@@ -153,7 +148,7 @@ namespace Registration
                     DataRow row = dataSet.Tables[0].Rows[0];
 
 
-                    
+
 
                     string column1Value = row["initial_stock"].ToString(); // Access column by name
                     int c1Value = int.Parse(column1Value);
@@ -207,52 +202,52 @@ namespace Registration
 
             // Create the SQL query based on the current month
             string query;
-if (month == 1) // January
-{
+            if (month == 1) // January
+            {
                 query = "INSERT INTO items_in_jan (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
-else if (month == 2) // February
-{
+            else if (month == 2) // February
+            {
                 query = "INSERT INTO items_in_feb (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 3) // March
-{
+            {
                 query = "INSERT INTO items_in_mar (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 4) // April
-{
+            {
                 query = "INSERT INTO items_in_apr (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 5) // May
-{
+            {
                 query = "INSERT INTO items_in_may (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 6) // June
-{
+            {
                 query = "INSERT INTO items_in_june (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 7) // July
-{
+            {
                 query = "INSERT INTO items_in_jul (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 8) // August
-{
+            {
                 query = "INSERT INTO items_in_aug (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 9) // September
-{
+            {
                 query = "INSERT INTO items_in_sep (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 10) // October
-{
+            {
                 query = "INSERT INTO items_in_oct (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else if (month == 11) // November
-{
+            {
                 query = "INSERT INTO items_in_nov (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
             else // December
-{
+            {
                 query = "INSERT INTO items_in_dec (item_name, company_name, brand_name, invoice_number, quantity,initial_stock,date) VALUES (@item_name, @company_name, @brand_name, @invoice_number, @quantity, @stock, @date);";
             }
 
@@ -303,7 +298,7 @@ else if (month == 2) // February
 
         }
 
-       
+
 
         protected void btn_view_Click(object sender, EventArgs e)
         {
@@ -312,7 +307,7 @@ else if (month == 2) // February
 
         protected void btn_edit_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void txt_firstname_TextChanged(object sender, EventArgs e)
@@ -323,7 +318,7 @@ else if (month == 2) // February
         protected void txt_id_TextChanged(object sender, EventArgs e)
         {
 
-           
+
 
         }
 

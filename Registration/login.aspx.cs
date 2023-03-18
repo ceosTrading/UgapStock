@@ -1,13 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.UI.WebControls;
 
 namespace Registration
 {
@@ -31,23 +25,24 @@ namespace Registration
 
             {
                 mycommand.Connection = connection;
-                    connection.Open();
-                    MySqlDataReader reader = mycommand.ExecuteReader();
+                connection.Open();
+                MySqlDataReader reader = mycommand.ExecuteReader();
 
-                    while (reader.Read())
-                    {
-                        string name = reader.GetString(1);
+                while (reader.Read())
+                {
+                    string name = reader.GetString(1);
                     string password = reader.GetString(2);
-                        ListItem item = new ListItem(name, password.ToString());
-                    //ddl_products.Items.Add(item);
+                    ListItem item = new ListItem(name, password.ToString());
+                    Session["UserName"] = name;
+
                     Response.Redirect("~/WELCOME !!!.aspx");
                 }
 
                 reader.Close();
                 lblMessage.Text = "Incorrect Username Or Password !!";
-                }
-
             }
-        
+
+        }
+
     }
 }

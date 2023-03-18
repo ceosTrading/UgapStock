@@ -5,11 +5,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Thisal\Desktop\FINAL</_PublishTargetUrl>
-    <History>True|2023-03-16T07:15:37.5445901Z;True|2023-03-15T12:47:45.6686320+05:30;True|2023-03-11T12:25:21.8781653+05:30;True|2023-03-10T12:10:03.7607609+05:30;</History>
+    <History>True|2023-03-17T09:43:41.6978543Z;True|2023-03-17T12:23:15.6845628+05:30;True|2023-03-16T12:45:37.5445901+05:30;True|2023-03-15T12:47:45.6686320+05:30;True|2023-03-11T12:25:21.8781653+05:30;True|2023-03-10T12:10:03.7607609+05:30;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AddItems.aspx">
       <publishTime>03/16/2023 12:09:03</publishTime>
+    </File>
+    <File Include="addnew.aspx">
+      <publishTime>03/17/2023 15:10:18</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 16:29:20</publishTime>
@@ -66,10 +69,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/22/2019 01:06:16</publishTime>
     </File>
     <File Include="bin/Registration.dll">
-      <publishTime>03/16/2023 12:45:35</publishTime>
+      <publishTime>03/17/2023 15:53:13</publishTime>
     </File>
     <File Include="bin/Registration.pdb">
-      <publishTime>03/16/2023 12:45:35</publishTime>
+      <publishTime>03/17/2023 15:53:13</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/08/2018 05:38:48</publishTime>
@@ -948,10 +951,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/20/2021 22:20:42</publishTime>
     </File>
     <File Include="stockout.aspx">
-      <publishTime>03/16/2023 12:08:18</publishTime>
+      <publishTime>03/17/2023 15:52:59</publishTime>
     </File>
     <File Include="View.aspx">
-      <publishTime>03/16/2023 12:45:19</publishTime>
+      <publishTime>03/17/2023 14:57:50</publishTime>
     </File>
     <File Include="ViewSwitcher.ascx">
       <publishTime>10/20/2021 22:20:42</publishTime>
@@ -960,7 +963,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/16/2023 12:45:36</publishTime>
     </File>
     <File Include="WELCOME !!!.aspx">
-      <publishTime>03/16/2023 12:25:01</publishTime>
+      <publishTime>03/17/2023 15:10:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

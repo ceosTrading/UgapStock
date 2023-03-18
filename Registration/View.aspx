@@ -105,9 +105,9 @@ padding: 5px;
 
     <form id="form1" runat="server" class="auto-style1">
         <br>
-        <asp:Button class="btn btn-primary" ID="btn_home" runat="server" Text="Home" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/additems.aspx" />
-        <asp:Button class="btn btn-primary" ID="btn_viewst" runat="server" Text="View Items" Height="38px" Width="141px" CausesValidation="false" PostBackUrl ="~/View.aspx" />
-
+        <asp:Button ID="btnhome" Text="Home" runat="server" PostBackUrl ="~/WELCOME !!!.aspx" Class="btn btn-info" />
+        <asp:Button ID="btnstockin" Text="Stock In" runat="server" PostBackUrl ="~/Additems.aspx" Class="btn btn-success" />
+         <asp:Button ID="stockout" Text="Stock Out" runat="server" PostBackUrl ="~/stockout.aspx" Class="btn btn-danger" />
                    
     </br>
 
@@ -138,7 +138,7 @@ padding: 5px;
         
         <br>
                     <asp:Button class="btn btn-warning" ID="btn_view" runat="server" Text="View" Height="38px" Width="141px" CausesValidation="false" OnClick="btn_view_Click1" />
-
+            
         </br>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Height="236px" Width="100%" CellPadding="4" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" AllowSorting="True" HorizontalAlign="Center" PageSize="1000" CssClass="mydatagrid">
                 <Columns>

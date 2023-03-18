@@ -8,8 +8,10 @@
 </head>
 <body id="bodyID" runat="server">
     <form id="form1" runat="server">
-        <div class="container text-center">
-            <h1>Welcome</h1>
+                    <div class="container text-center">
+
+            <h1 class="display-3"><asp:Label ID="Label1" runat="server" Text=""></asp:Label></h1>
+              
                 <asp:Button ID="btnstockin" Text="Stock In" runat="server" OnClick="ValidateUser" Class="btn btn-success" />
                 &nbsp;&nbsp;&nbsp;
                 <asp:Button ID="stockout" Text="Stock Out" runat="server" OnClick="ValidateUser1" Class="btn btn-danger" />
